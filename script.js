@@ -3,33 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctx = canvas.getContext('2d');
     const photoInput = document.getElementById('photo');
     const uploadBtn = document.getElementById('uploadBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
+    // const downloadBtn = document.getElementById('downloadBtn');
+    const uploadTitle = document.getElementById('uploadTitle');
     const photoInfo = document.getElementById('photoInfo');
 
     uploadBtn.addEventListener('click', function() {
         photoInput.click();
     });
 
-    downloadBtn.addEventListener('click', function() {
-        const photoContainer = document.querySelector('.photo-container');
+    // downloadBtn.addEventListener('click', function() {
+    //     const photoContainer = document.querySelector('.photo-container');
         
-        html2canvas(photoContainer, {
-            backgroundColor: null,
-            scale: 2,
-            logging: false,
-            useCORS: true,
-            allowTaint: true
-        }).then(function(canvas) {
-            canvas.toBlob(function(blob) {
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.download = 'photo-' + Date.now() + '.png';
-                link.href = url;
-                link.click();
-                URL.revokeObjectURL(url);
-            }, 'image/png', 1.0);
-        });
-    });
+    //     html2canvas(photoContainer, {
+    //         backgroundColor: null,
+    //         scale: 2,
+    //         logging: false,
+    //         useCORS: true,
+    //         allowTaint: true
+    //     }).then(function(canvas) {
+    //         canvas.toBlob(function(blob) {
+    //             const url = URL.createObjectURL(blob);
+    //             const link = document.createElement('a');
+    //             link.download = 'photo-' + Date.now() + '.png';
+    //             link.href = url;
+    //             link.click();
+    //             URL.revokeObjectURL(url);
+    //         }, 'image/png', 1.0);
+    //     });
+    // });
 
     photoInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -105,9 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 addVignetteEffect(ctx, canvasWidth, canvasHeight);
 
                 photoInfo.style.display = 'flex';
-                
-                downloadBtn.style.display = 'inline-block';
-
+                uploadTitle.innerHTML = 'Tire print e recorte a imagem'
                 extractExifData(img);
             };
             img.src = event.target.result;
