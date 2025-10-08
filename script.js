@@ -11,93 +11,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     downloadBtn.addEventListener('click', function() {
-        const tempCanvas = document.createElement('canvas');
-        const tempCtx = tempCanvas.getContext('2d');
+        const photoContainer = document.querySelector('.photo-container');
         
-        const borderSize = 20;
-        const bottomBorderSize = 120;
-        tempCanvas.width = canvas.width + (borderSize * 2);
-        tempCanvas.height = canvas.height + borderSize + bottomBorderSize;
-        
-        tempCtx.fillStyle = '#ffffff';
-        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-        
-        tempCtx.drawImage(canvas, borderSize, borderSize);
-        
-        const cameraModel = document.getElementById('cameraModel').textContent;
-        const cameraBrand = document.getElementById('cameraBrand').textContent;
-        const focalLength = document.getElementById('focalLength').textContent;
-        const aperture = document.getElementById('aperture').textContent;
-        const shutterSpeed = document.getElementById('shutterSpeed').textContent;
-        const iso = document.getElementById('iso').textContent;
-        
-        if (cameraModel || cameraBrand || focalLength || aperture || shutterSpeed || iso) {
-            const infoStartY = canvas.height + borderSize + 56;
-            const centerX = tempCanvas.width / 2;
-            
-            tempCtx.textAlign = 'center';
-            tempCtx.textBaseline = 'middle';
-            
-            const textCanvas = document.createElement('canvas');
-            textCanvas.width = tempCanvas.width;
-            textCanvas.height = 50;
-       
-            let parts = [];
-
-            parts.push({
-                text: 'Shot on',
-                font: '18px Roboto, Arial, sans-serif',
-                color: '#808080'
-            });
-            
-            if (cameraModel) {
-                parts.push({
-                    text: ' ' + cameraModel,
-                    font: 'bold 18px Roboto, Arial, sans-serif',
-                    color: '#1f1c1c'
-                });
-            }
-            
-            if (cameraBrand) {
-                parts.push({
-                    text: ' ' + cameraBrand,
-                    font: '500 18px Roboto, Arial, sans-serif',
-                    color: '#373434'
-                });
-            }
-            
-            let totalWidth = 0;
-            parts.forEach(part => {
-                tempCtx.font = part.font;
-                totalWidth += tempCtx.measureText(part.text).width;
-            });
-            
-            let currentX = centerX - (totalWidth / 2);
-            parts.forEach(part => {
-                tempCtx.font = part.font;
-                tempCtx.fillStyle = part.color;
-                tempCtx.textAlign = 'left';
-                tempCtx.fillText(part.text, currentX, infoStartY);
-                currentX += tempCtx.measureText(part.text).width;
-            });
-            
-            const details = [focalLength, aperture, shutterSpeed, iso].filter(v => v).join(' ');
-            if (details) {
-                tempCtx.font = '15px Roboto, Arial, sans-serif';
-                tempCtx.fillStyle = '#808080';
-                tempCtx.textAlign = 'center';
-                tempCtx.fillText(details, centerX, infoStartY + 25);
-            }
-        }
-        
-        tempCanvas.toBlob(function(blob) {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.download = 'photo-' + Date.now() + '.png';
-            link.href = url;
-            link.click();
-            URL.revokeObjectURL(url);
-        }, 'image/png', 1.0);
+        html2canvas(photoContainer, {
+            backgroundColor: null,
+            scale: 2,
+            logging: false,
+            useCORS: true,
+            allowTaint: true
+        }).then(function(canvas) {
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = 'photo-' + Date.now() + '.png';
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png', 1.0);
+        });
     });
 
     photoInput.addEventListener('change', function(e) {
