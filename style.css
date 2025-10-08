@@ -157,7 +157,7 @@ input[type="file"] {
     }
 
     .photo-info {
-        font-size: 0.85rem;
+        font-size: 1rem;
         bottom: 28px;
         left: 10px;
         right: 10px;
@@ -188,10 +188,7 @@ input[type="file"] {
 }
 
 @media screen and (max-width: 480px) {
-    body {
-        margin-top: 15px;
-        padding: 0 15px;
-    }
+ 
 
     h2 {
         font-size: 1.1rem;
@@ -200,13 +197,13 @@ input[type="file"] {
 
     #photoCanvas {
         border: 10px solid #ffffff;
-        border-bottom: 80px solid #ffffff;
-        max-width: calc(100vw - 50px);
+        border-bottom: 70px solid #ffffff;
+      
     }
 
     .photo-info {
         font-size: 0.75rem;
-        bottom: 20px;
+        bottom: 15px;
         left: 8px;
         right: 8px;
         gap: 2px;
