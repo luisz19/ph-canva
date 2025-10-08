@@ -175,7 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 photoInfo.style.display = 'flex';
                 
-                // Mostra o botão de download
                 downloadBtn.style.display = 'inline-block';
 
                 extractExifData(img);
