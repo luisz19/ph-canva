@@ -1,0 +1,239 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 30px;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+h2 {
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#photoCanvas {
+    display: block;
+    border: 20px solid #ffffff;
+    border-bottom: 120px solid #ffffff;
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    max-width: calc(100vw - 100px);
+    height: auto;
+}
+
+.photo-info {
+    display: none;
+    position: absolute;
+    bottom: 38px;
+    left: 15px;
+    right: 15px;
+    height: 50px;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    color: #808080ff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+}
+
+.cameraName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.info-label {
+    font-weight: 400;
+    display: inline;
+}
+
+.info-camera {
+    font-weight: bold;
+    color: #1f1c1cff;
+}
+
+.camera-brand {
+    font-weight: 500; 
+    text-transform: uppercase;
+    color: #373434cd;
+}
+
+.info-details {
+    font-size: 1rem;
+    font-weight: 400;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#uploadBtn {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 12px 30px;
+    background-color: #0a1f5c7f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#uploadBtn:hover {
+    background-color: #0a1f5cb5;
+}
+
+#uploadBtn:active {
+    transform: scale(0.98);
+}
+
+#downloadBtn {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 12px 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#downloadBtn:hover {
+    background-color: #218838;
+}
+
+#downloadBtn:active {
+    transform: scale(0.98);
+}
+
+/* Media Queries para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    body {
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    #photoCanvas {
+        border: 15px solid #ffffff;
+        border-bottom: 100px solid #ffffff;
+        max-width: calc(100vw - 70px);
+    }
+
+    .photo-info {
+        font-size: 0.85rem;
+        bottom: 28px;
+        left: 10px;
+        right: 10px;
+        gap: 3px;
+    }
+
+    .cameraName {
+        gap: 4px;
+        font-size: 0.85rem;
+    }
+
+    .info-details {
+        font-size: 0.7rem;
+        gap: 6px;
+    }
+
+    #uploadBtn {
+        padding: 10px 25px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    #downloadBtn {
+        padding: 10px 25px;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        margin-top: 15px;
+        padding: 0 15px;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    #photoCanvas {
+        border: 10px solid #ffffff;
+        border-bottom: 80px solid #ffffff;
+        max-width: calc(100vw - 50px);
+    }
+
+    .photo-info {
+        font-size: 0.75rem;
+        bottom: 20px;
+        left: 8px;
+        right: 8px;
+        gap: 2px;
+        height: 42px;
+    }
+
+    .cameraName {
+        gap: 3px;
+        font-size: 0.7rem;
+    }
+
+    .info-details {
+        font-size: 0.6rem;
+        gap: 5px;
+    }
+
+    #uploadBtn {
+        padding: 8px 20px;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-bottom: 20px;
+    }
+    
+    #downloadBtn {
+        padding: 8px 20px;
+        font-size: 13px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+}
